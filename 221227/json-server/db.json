@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "one",
+      "author": "onemaa"
+    },
+    {
+      "id": 2,
+      "title": "two",
+      "author": "twooh"
+    },
+    {
+      "id": 5,
+      "title": "dd",
+      "author": "wweqwe"
+    },
+    {
+      "id": 10,
+      "title": "defgdfg",
+      "author": "dfgdfg"
+    },
+    {
+      "id": 7,
+      "title": "ffe",
+      "author": "refef"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment"
+    },
+    {
+      "id": 2,
+      "body": "bingo"
+    },
+    {
+      "id": 3,
+      "body": "disssssco"
+    }
+  ],
+  "profile": {
+    "name": "kim"
+  }
+}
