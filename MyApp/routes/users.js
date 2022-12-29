@@ -13,20 +13,17 @@ router.get('/', function (req, res, next) {
 router.post('/login', function (req, res) {
   req.session.email = req.query.email
   req.session.is_logined = true
-
-
-
   // 로그인된 세션 정보 저장하는데..
-  // req.session.save(err => {
-  //   // 에러 발생하면 에러 메시지
-  //   if (err) {
-  //     throw err;
-  //   }
-  //   // 에러 아니면
-  //   res.redirect('/')
-  // })
+  req.session.save((err) => {
+    // 에러 발생하면 에러 메시지
+    if (err) {
+      throw err;
+    }
+    // 에러 아니면
+    res.redirect('/')
+  })
 })
-router.get("/logout", (req, res, next) => {
+router.post("/logout", (req, res, next) => {
   req.session.destroy()
   res.redirect("/login.html")
 })

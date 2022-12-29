@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- app.js 에서  /users  필터링 거쳤다가,  users.js 에서 /login -->
+    <!-- 그리고 method 도 POST 방식  (users.js 참고) -->
+    <form action="/users/login" method="POST">
+      <input name="email" placeholder="email 입력!" />
+      <input name="pwd" placeholder="pwd 입력" />
+      <button>로그인</button>
+    </form>
+  </body>
+</html>
