@@ -51,6 +51,11 @@ function insert() {
 
 
 //수정
+function update() {
+  btnupd.addEventListener("click", function (ev) {
+
+  })
+}
 
 
 //삭제
@@ -75,6 +80,5 @@ function deleted() {
     }
   })
 }
-//단건조회
 
 
