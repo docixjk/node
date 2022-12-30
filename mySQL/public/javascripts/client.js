@@ -1,14 +1,16 @@
 // const express = require("express");
 
 const url = "/customers"
+
 selectAll() //전체 조회
 insert() //등록버튼 이벤트 지정
 deleted()// 단건조회 , 삭제 
+update()//업데이트
 //전체조회 
 function selectAll() {
   fetch(url)
-    .then(res => res.json())
-    .then(res => {
+    .then((res) => res.json())
+    .then((res) => {
       //list 클리어
       list.innerHTML = '';
       for (let i = 0; i < res.length; i++) {
@@ -44,8 +46,8 @@ function insert() {
       },
       body: JSON.stringify(data) // 바디에서 어떤 데이터를 요청할것이냐
     })
-      .then(res => res.json())
-      .then(res => { selectAll() })
+      .then((res) => res.json())
+      .then((res) => { selectAll() })
   })
 }
 
@@ -53,8 +55,33 @@ function insert() {
 //수정
 function update() {
   btnupd.addEventListener("click", function (ev) {
-
-  })
+    let data = {
+      name: names.value,
+      email: email.value,
+      phone: phone.value,
+      address: address.value
+    }
+    let id = userid.value
+    fetch(`${url}/${id}`, {
+      method: "PUT", //PUT 방식으로 요청
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(data) // 바디에서 어떤 데이터를 요청할것이냐
+    })
+      .then((res) => res.json()) // 응답 핸들러
+      .then((res) => {
+        if (res.result == true) {
+          alert("수정완료")
+          selectAll()
+        } else {
+          alert("수정실패")
+        }
+      })
+      .catch(() => {
+        alert("수정실패")
+      });
+  });
 }
 
 
@@ -66,7 +93,7 @@ function deleted() {
       let id = ev.target.closest("tr").getAttribute("data-id")
       fetch(`${url}/${id}`)
         .then((res) => res.json())
-        .then(res => {
+        .then((res) => {
           userid.value = res.id;
           names.value = res.name;
           email.value = res.email;

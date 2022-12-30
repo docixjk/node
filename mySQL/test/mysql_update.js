@@ -18,6 +18,9 @@ let sql = "UPDATE CUSTOMERS SET ? WHERE id=?"
 //수정할 값을 넣어주고 {}, 뒤에는 수정할 id 값을 넣어준다
 let data = [{ email: "park@gmail.com", name: "pack" }, 2]
 
+// let sql = "UPDATE customers SET email=?, name=? WHERE id=?"
+// let data = ["park@gmail.com", "pack", 1]
+
 connection.query(sql, data, function (err, results, fields) {
   if (err) { console.log(err) } //error시 콘솔출력
   console.log(results)
