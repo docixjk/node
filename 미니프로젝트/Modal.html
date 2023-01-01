@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모달창</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./style.css">  
+</head>
+
+<body>
+  <main id="app">
+    <h1 class="blind">로그인및회원가입창</h1>
+    <!-- 닫기 섹션 -->
+    <section class="top-close">
+      <p class="top-txt">로그인  또는  회원가입</p>
+        <a class="close" href="./Modalpop.html">
+          <img src="./img/Vector 2.png" alt="">
+          <img src="./img/Vector 3.png" alt="">             
+        </a> 
+    </section>
+    <!-- 입력창 -->
+    <section class="user-input">
+      <h2 class="blind">아이디 비밀번호 입력창</h2>
+      <p class="msg">여러 게임 정보를 공유해 보세요</p>
+      <label for="id"></label>
+      <input class="inp-id" type="text" id="id" required placeholder="아이디">
+      <label for="pw"></label>
+      <input class="inp-pw" type="password" id="pw" required placeholder="비밀번호">
+      <div class="check-wrap">
+        <input class="check-keep" type="checkbox" id="check" name="로그인상태유지">
+      </div>
+      <button class="log-btn" type="submit">로그인</button>
+      <ul class="join-find">
+        <li class="user-join"><a href="#none">회원가입</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+
+</html>
