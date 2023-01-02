@@ -1,73 +1,96 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시작 화면</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <!-- <link rel="stylesheet" href="./style.css">   -->
+    <link rel="stylesheet" href="초기화면.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>시작 화면</title>
-  <link rel="stylesheet" href="./reset.css">
-  <!-- <link rel="stylesheet" href="./style.css">   -->
-  <link rel="stylesheet" href="초기화면.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-</head>
+  <body>
+    <div id="container">
+      <div id="imgno" style="width: 100%; height: 100%"></div>
+      <div id="start">
+        <div id="ex1" class="modal">
+          <main id="app">
+            <h1 class="blind">로그인창</h1>
+            <!-- 닫기 섹션 -->
+            <section class="top-close">
+              <p class="top-txt">로그인</p>
+            </section>
+            <!-- 입력창 -->
+            <section class="user-input">
+              <h2 class="blind">아이디 비밀번호 입력창</h2>
+              <p class="msg">여러 게임 정보를 공유해 보세요</p>
+              <label for="id"></label>
+              <input
+                class="inp-id"
+                type="text"
+                id="id"
+                required
+                placeholder="아이디"
+              />
+              <label for="pw"></label>
+              <input
+                class="inp-pw"
+                type="password"
+                id="pw"
+                required
+                placeholder="비밀번호"
+              />
+              <div class="check-wrap">
+                <input
+                  class="check-keep"
+                  type="checkbox"
+                  id="check"
+                  name="로그인상태유지"
+                />
+              </div>
+              <div id="txt">
+                <p>아이디와 비밀번호를 입력하시면 자동 가입 됩니다.</p>
+                <p id="mini">
+                  중복된 아이디와 비밀번호가 있을시 로그인이 되지 않습니다.
+                </p>
+              </div>
+              <button class="log-btn" type="submit">로그인</button>
+            </section>
+          </main>
+        </div>
 
-<body>
-  <div id="container">
-    <div id="imgno" style="width: 100%; height: 100%"></div>
-    <div id="start">
-      <div id="ex1" class="modal">
-        <main id="app">
-          <h1 class="blind">로그인창</h1>
-          <!-- 닫기 섹션 -->
-          <section class="top-close">
-            <p class="top-txt">로그인</p>
-          </section>
-          <!-- 입력창 -->
-          <section class="user-input">
-            <h2 class="blind">아이디 비밀번호 입력창</h2>
-            <p class="msg">여러 게임 정보를 공유해 보세요</p>
-            <label for="id"></label>
-            <input class="inp-id" type="text" id="id" required placeholder="아이디">
-            <label for="pw"></label>
-            <input class="inp-pw" type="password" id="pw" required placeholder="비밀번호">
-            <div class="check-wrap">
-              <input class="check-keep" type="checkbox" id="check" name="로그인상태유지">
-            </div>
-            <div id="txt">
-              <p>아이디와 비밀번호를 입력하시면 자동 가입 됩니다.</p>
-              <p id="mini">중복된 아이디와 비밀번호가 있을시 로그인이 되지 않습니다.</p>
-            </div>
-            <button class="log-btn" type="submit">로그인</button>
-          </section>
-        </main>
+        <p><a id="start" href="#ex1" rel="modal:open">START</a></p>
+        <!-- class="top_title random_colors" -->
       </div>
-       
-      <p><a id="start" href="#ex1" rel="modal:open">START</a></p>
-      <!-- class="top_title random_colors" -->
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <script>
-    let random_img;
-    function randomImg() {
-      for (let i = 1; i <= 5; i++) {
-        random_img = parseInt(Math.ceil(Math.random() * 5));
-        if (random_img == 6) {
-          random_img--;
-        } else {
-          imgno.innerHTML = `<img style="width: 100%; height: 100%" class="img_l" src="미니프로젝트 이미지/${random_img}.jpg" />`;
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let random_img;
+      function randomImg() {
+        for (let i = 1; i <= 5; i++) {
+          random_img = parseInt(Math.ceil(Math.random() * 5));
+          if (random_img == 6) {
+            random_img--;
+          } else {
+            imgno.innerHTML = `<img style="width: 100%; height: 100%" class="img_l" src="proimg/${random_img}.jpg" />`;
+          }
         }
       }
-    }
-    randomImg();
-    setInterval(() => {
       randomImg();
-    }, 1500);
-  </script>
-</body>
-
+      setInterval(() => {
+        randomImg();
+      }, 1500);
+    </script>
+  </body>
 </html>
