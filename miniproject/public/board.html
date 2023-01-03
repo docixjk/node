@@ -5,97 +5,191 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로스트아크 게시판</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="board.css" />
   </head>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    #container {
-      width: 80%;
-      margin: 0 auto;
-      margin-right: 0;
-    }
-    header {
-      text-align: center;
-    }
-    header h1 {
-      font-size: 4vh;
-    }
-    .btnlist {
-      width: 100%;
-      height: 10%;
-    }
-    .btnlist button {
-      float: right;
-      padding: 10px;
-      margin: 5px;
-      margin-bottom: 10px;
-      width: 15%;
-      font-size: 2vh;
-      font-weight: bold;
-      background-color: rgb(232, 138, 255);
-      border: none;
-      border-radius: 25px;
-    }
-    nav {
-      width: 100%;
-      overflow: hidden;
-      height: 45px;
-      background-color: blueviolet;
-    }
-    nav ul {
-      text-align: center;
-      padding: 0;
-      margin: 0;
-    }
-    nav li {
-      display: inline-block;
-      list-style: none;
-      height: 45px;
-      font-size: 2vh;
-      text-align: center;
-      padding: 10px;
-      margin: 0;
-      color: white;
-      font-weight: bold;
-    }
-    .nav1 {
-      float: left;
-      width: 15%;
-    }
-    .nav2 {
-      float: left;
-      width: 35%;
-    }
-    .nav3 {
-      float: left;
-      width: 30%;
-    }
-    .nav4 {
-      float: right;
-      width: 20%;
-    }
-  </style>
   <body>
+    <img src="images/proimg/cutpack.jpg" />
     <div id="container">
       <header>
         <h1>로스트아크 유저 게시판</h1>
         <div class="btnlist">
-          <button>삭제</button>
-          <button>수정</button>
-          <button>등록</button>
+          <button class="btn">삭제</button>
+          <button class="btn">수정</button>
+          <div id="my_modal">
+            <div id="minicon">
+              <form action="https://www.naver.com">
+                <main class="app">
+                  <h1><strong>게시판 글 올리기</strong></h1>
+                  <div class="modal_nav">
+                    <button id="close" class="modal_close_btn">취소</button>
+                    <button type="submit">등록</button>
+                  </div>
+                  <section>
+                    <article>
+                      <label class="lableft" for="title">제목</label>
+                      <input
+                        class="labinput"
+                        id="title"
+                        name="title"
+                        type="text"
+                      />
+                    </article>
+                    <article id="down">
+                      <label class="lableft" for="Contents">내용</label>
+                      <textarea
+                        class="labinput"
+                        name="Contents"
+                        id="Contents"
+                      ></textarea>
+                    </article>
+
+                    <article class="rows">
+                      <h3 id="clock"></h3>
+                    </article>
+                    <article class="quotes"></article>
+                  </section>
+                </main>
+              </form>
+            </div>
+          </div>
+
+          <button class="btn" id="popup_open_btn">등록</button>
         </div>
       </header>
-      <nav>
-        <ul>
-          <li class="nav1">번호</li>
-          <li class="nav2">제목</li>
-          <li class="nav3">작성일자</li>
-          <li class="nav4">아이디</li>
+      <nav class="col-md-12">
+        <ul class="row">
+          <li class="lino">번호</li>
+          <li class="liti">제목</li>
+          <li class="liday">작성일자</li>
+          <li class="liId">아이디</li>
         </ul>
       </nav>
-      <section></section>
-      <footer></footer>
+
+      <table>
+        <tbody>
+          <tr>
+            <td class="tdNo"><%=%></td>
+            <td class="tdTi"><%=%></td>
+            <td class="tdDay"><%=%></td>
+            <td class="tdId"><%=%></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <script>
+      const quotes = [
+        "“Be yourself everyone else is already taken.”― Oscar Wilde",
+        "“So many books, so little time.”― Frank Zappa",
+        "“Be the change that you wish to see in the world.”― Mahatma Gandhi",
+        "“You only live once, but if you do it right, once is enough.”― Mae West",
+        "“If you tell the truth, you don't have to remember anything.”― Mark Twain",
+        "“To live is the rarest thing in the world. Most people exist, that is all.”― Oscar Wilde",
+        "“Without music, life would be a mistake.”― Friedrich Nietzsche, Twilight of the Idols",
+      ];
+
+      function random() {
+        for (let i = 0; i < quotes.length; i++) {
+          quotesnum = parseInt(Math.floor(Math.random() * 6));
+
+          document.querySelector(".quotes").innerText = quotes[quotesnum];
+        }
+      }
+      setInterval(() => {
+        random();
+      }, 1500);
+
+      var Target = document.getElementById("clock");
+      function clock() {
+        var time = new Date();
+
+        var month = time.getMonth();
+        var date = time.getDate();
+        var day = time.getDay();
+        var week = ["일", "월", "화", "수", "목", "금", "토"];
+
+        var hours = time.getHours();
+        var minutes = time.getMinutes();
+        var seconds = time.getSeconds();
+
+        Target.innerText =
+          "현재시간은 " +
+          `${month + 1}월 ${date}일 ${week[day]}요일 ` +
+          `${hours < 10 ? `0${hours}` : hours}:${
+            minutes < 10 ? `0${minutes}` : minutes
+          }:${seconds < 10 ? `0${seconds}` : seconds}` +
+          " 입니다";
+      }
+      clock();
+      setInterval(clock, 1000); // 1초마다 실행
+      function modal(id) {
+        var zIndex = 9999;
+        var modal = $("#" + id);
+
+        // 모달 div 뒤에 희끄무레한 레이어
+        var bg = $("<div>")
+          .css({
+            position: "fixed",
+            zIndex: zIndex,
+            left: "0px",
+            top: "0px",
+            width: "100%",
+            height: "100%",
+            overflow: "auto",
+            // 레이어 색갈은 여기서 바꾸면 됨
+            backgroundColor: "rgba(0,0,0,0.4)",
+          })
+          .appendTo("body");
+
+        modal
+          .css({
+            position: "fixed",
+            boxShadow:
+              "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+
+            // 시꺼먼 레이어 보다 한칸 위에 보이기
+            zIndex: zIndex + 1,
+
+            // div center 정렬
+            width: "900px",
+            height: "90%",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            msTransform: "translate(-50%, -50%)",
+            webkitTransform: "translate(-50%, -50%)",
+          })
+          .show()
+          // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
+          .find(".modal_close_btn")
+          .on("click", function () {
+            bg.remove();
+            modal.hide();
+          });
+      }
+
+      $("#popup_open_btn").on("click", function () {
+        // 모달창 띄우기
+        modal("my_modal");
+      });
+    </script>
   </body>
 </html>

@@ -1,48 +1,45 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var mysql = require('mysql');
-var bodyParser = require('body-parser')
+var http = require('http')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 var loginRouter = require('./routes/login');
+var boardRouter = require('./routes/board');
 
 const session = require('express-session')                // 추가!
 const fileStore = require('session-file-store')(session); // 추가!
 
 
 var app = express();
-app.use(
-  session({ //서버단에 정보를 저장할때 쓰는거
-    secret: "secret key",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      httpOnly: true,
-      // secure: true, // https:// 환경에서만 됨
-      maxAge: 60000 //밀리초
-    },
-    store: new fileStore()
-  })
-)
+
+var server = http.createServer(app)
+
+app.use('/public/', express.static('./public'));
+
+app.use(session({
+  secret: "secret key",
+  resave: false,
+  saveUninitialized: true,
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/login', loginRouter)
+app.use('/', loginRouter)
+app.use('/board', boardRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -64,6 +64,4 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-// 세션 미들웨더(?)   - 교재 p. 135  (이 코드를 상단부에 적어야 함.)
-
 module.exports = app;
