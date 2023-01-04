@@ -8,7 +8,7 @@ var mysql = require('mysql');
 var http = require('http')
 
 
-var loginRouter = require('./routes/login');
+// var loginRouter = require('./routes/login');
 var boardRouter = require('./routes/board');
 
 const session = require('express-session')                // 추가!
@@ -38,8 +38,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', loginRouter)
-app.use('/board', boardRouter)
+// app.use('/', loginRouter)
+app.use('/', boardRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

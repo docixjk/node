@@ -48,98 +48,84 @@ header h1 {
   border-top: 2px solid black;
   border-bottom: 4px solid black;
   overflow: hidden;
-  height: 50px;
+  height: 51px;
 }
 .listul {
   width: 100%;
+  height: 51px;
   padding: 0;
   margin: 0;
+  list-style-type: none;
 }
 nav li {
-  display: inline-block;
+  float: left;
   list-style: none;
-  height: 49px;
+  height: 51px;
+  line-height: 51px;
   font-size: 20px;
   text-align: center;
-  margin: 0;
   font-weight: bold;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: -2px;
 }
 .lino {
   width: 10%;
 }
 .liti {
-  width: 40%;
-  position: relative;
-  line-height: 49px;
-  top: -2px;
+  width: 20%;
 }
 .liday {
-  width: 20%;
-  position: relative;
-  line-height: 49px;
-  top: -2px;
+  width: 40%;
 }
 .liId {
-  position: relative;
   width: 10%;
-  line-height: 49px;
-  top: -2px;
 }
-.liupd,
-.lidel {
-  position: relative;
-  width: 8%;
+.liupd {
+  width: 10%;
   float: right;
-  line-height: 49px;
-  top: -2px;
 }
-.tdNo {
-  margin-left: 2px;
-  width: 7%;
+.lidel {
+  width: 10%;
+  float: right;
+}
+table {
+  width: 100%;
+}
+td {
+  text-align: center;
+  font-size: 20px;
   padding: 0;
-  border-right: 2px solid palevioletred;
+  border-bottom: 1px solid black;
+  height: 50px;
+}
+.tdNo,
+.tdId {
+  width: 10%;
 }
 .tdTi {
-  width: 40%;
-  padding: 0;
-  border-right: 2px solid palevioletred;
+  width: 20%;
 }
 .tdDay {
-  width: 30%;
-  padding: 0;
-  border-right: 2px solid palevioletred;
+  width: 40%;
 }
-.tdId {
-  width: 20%;
-  padding: 0;
+.tdBtnupd,
+.tdBtnde {
+  width: 10%;
 }
-#my_modal {
-  display: none;
-  width: 300px;
-  background-image: url("../images/proimg/3.jpg");
-  background-size: cover;
-  padding: 20px 60px;
-  border: 1px solid #888;
-  border-radius: 3px;
-}
-
-.app li {
-  list-style: none;
-  display: inline-block;
-}
-.app button {
-  float: right;
-  padding: 10px;
-  width: 100px;
-  font-size: 2vh;
-  margin-left: 8px;
-  font-weight: bold;
+td button {
+  border-radius: 5px;
   border: none;
 }
-.labinput {
-  border-radius: 10px;
-  border: 4px solid grey;
+.btn1 {
+  background-color: rgb(151, 151, 151);
 }
+.btn2 {
+  background-color: black;
+  color: white;
+}
+
 #down {
   position: relative;
   top: 20px;
@@ -148,11 +134,6 @@ nav li {
 #title {
   width: 490px;
   height: 47px;
-}
-.modal_nav button {
-  border-radius: 15px;
-  background-color: rgb(124, 124, 124);
-  color: white;
 }
 .lableft {
   float: left;
@@ -189,12 +170,4 @@ h3 {
 }
 #close {
   font: 20px bold;
-}
-table {
-  width: 100%;
-  border-bottom: 1px solid black;
-}
-td {
-  text-align: center;
-  font-size: 2.2vh;
 }
