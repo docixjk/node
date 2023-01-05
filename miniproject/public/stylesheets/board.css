@@ -12,6 +12,13 @@ body {
   height: 100%;
   margin: 0 auto;
   margin-right: 0;
+  background-image: url("/images/proimg/back2.jpg");
+  background-size: 100% 100%;
+}
+li,
+td {
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 5px black;
 }
 img {
   width: 20%;
@@ -26,6 +33,8 @@ header h1 {
   font-weight: bold;
   padding-top: 2%;
   padding-bottom: 2%;
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 5px black;
 }
 .btnlist {
   width: 100%;
@@ -41,6 +50,11 @@ header h1 {
   font-weight: bold;
   border: 1px solid black;
   border-radius: 10px;
+  background-color: white;
+}
+.addbtn:hover {
+  color: white;
+  background-color: black;
 }
 
 .listnav {
@@ -57,7 +71,7 @@ header h1 {
   margin: 0;
   list-style-type: none;
 }
-nav li {
+.listnav li {
   float: left;
   list-style: none;
   height: 51px;
@@ -114,16 +128,32 @@ td {
 .tdBtnde {
   width: 10%;
 }
-td button {
+td a {
   border-radius: 5px;
   border: none;
+  padding: 5px;
+  padding-left: 5px;
+}
+.btn1:hover {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+}
+.btn2:hover {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
 }
 .btn1 {
-  background-color: rgb(151, 151, 151);
+  background-color: rgb(255, 255, 255);
+  text-decoration: none;
+  border: 1px solid black;
+  color: black;
 }
 .btn2 {
   background-color: black;
   color: white;
+  text-decoration: none;
 }
 
 #down {
@@ -170,4 +200,13 @@ h3 {
 }
 #close {
   font: 20px bold;
+}
+
+#page-bar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+#page-bar a {
+  color: black;
 }

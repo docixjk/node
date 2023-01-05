@@ -9,6 +9,7 @@ var http = require('http')
 
 
 // var loginRouter = require('./routes/login');
+var startRouter = require('./routes/start');
 var boardRouter = require('./routes/board');
 
 const session = require('express-session')                // 추가!
@@ -19,7 +20,6 @@ var app = express();
 
 var server = http.createServer(app)
 
-app.use('/public/', express.static('./public'));
 
 app.use(session({
   secret: "secret key",
@@ -36,10 +36,11 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use('/public/', express.static('./public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', loginRouter)
-app.use('/', boardRouter)
+app.use('/', startRouter)
+app.use('/board', boardRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
