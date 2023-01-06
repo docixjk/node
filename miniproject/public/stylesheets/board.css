@@ -8,22 +8,34 @@ body {
   height: 100%;
 }
 #container {
-  width: 80%;
+  overflow: auto;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
   margin-right: 0;
-  background-image: url("/images/proimg/back2.jpg");
-  background-size: 100% 100%;
+  background-image: url("/images/proimg/back3.jpg");
+  background-size: 100% 80%;
+  background-position-y: 125%;
 }
 li,
 td {
   color: rgb(255, 255, 255);
   text-shadow: 0px 0px 5px black;
 }
-img {
-  width: 20%;
-  height: 100%;
-  float: left;
+#topname {
+  background-image: url("/images/proimg/back2.jpg");
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  /* width: 100%; */
+  left: 0;
+  right: 0;
+  background-position-y: 10%;
+}
+#botname {
+  overflow: auto;
+  margin-top: 16rem;
+  width: 100%;
 }
 header {
   text-align: center;
@@ -40,7 +52,7 @@ header h1 {
   width: 100%;
   height: 10%;
 }
-.btnlist .btn {
+.btn {
   float: right;
   padding: 10px;
   margin: 5px;
@@ -51,8 +63,13 @@ header h1 {
   border: 1px solid black;
   border-radius: 10px;
   background-color: white;
+  margin-right: 30px;
 }
 .addbtn:hover {
+  color: white;
+  background-color: black;
+}
+.backbtn:hover {
   color: white;
   background-color: black;
 }
@@ -114,19 +131,21 @@ td {
   border-bottom: 1px solid black;
   height: 50px;
 }
-.tdNo,
-.tdId {
+.tdNo {
   width: 10%;
+}
+.tdId {
+  width: 9%;
 }
 .tdTi {
   width: 20%;
 }
 .tdDay {
-  width: 40%;
+  width: 41%;
 }
 .tdBtnupd,
-.tdBtnde {
-  width: 10%;
+.tdBtndel {
+  width: 12%;
 }
 td a {
   border-radius: 5px;
@@ -209,4 +228,8 @@ h3 {
 }
 #page-bar a {
   color: black;
+}
+.tdBtnupd,
+.tdBtndel {
+  text-shadow: none;
 }

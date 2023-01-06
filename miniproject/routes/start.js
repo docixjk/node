@@ -6,6 +6,6 @@ router.get('/', (req, res) => {
 })
 
 router.get("/lostark", (req, res) => {
-  res.redirect('lostark.html')
+  res.render('lostark')
 })
 module.exports = router;

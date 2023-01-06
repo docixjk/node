@@ -38,11 +38,12 @@
     <link rel="stylesheet" href="../stylesheets/board.css" />
   </head>
   <body>
-    <img src="../images/cutpack.jpg" />
     <div id="container">
+      <div id="topname">
       <header>
-        <h1>로스트아크 유저 방명록</h1>
-        <div class="btnlist">
+        <h1>로스트아크 유저 게시판</h1>
+        <div>
+          <button class="backbtn btn">뒤로가기</button>
           <button class="addbtn btn">등록</button>
         </div>
       </header>
@@ -52,54 +53,42 @@
           <li class="liti">제목</li>
           <li class="liday" style="color: azure">내용</li>
           <li class="liId">작성자</li>
-          <li class="lidel">삭제</li>
           <li class="liupd">수정</li>
+          <li class="lidel">삭제</li>
         </ul>
       </nav>
-
+      </div>
+      <div id="botname">
       <table>
         <tbody>
-          <% boards.forEach(function(board){ %>
+          <% for(var i=0; i<data.length;i++){ %>
           <tr>
-            <td class="tdNo"><%= board.no %></td>
-            <td class="tdTi"><%= board.title %></td>
-            <td class="tdDay" style="color: azure"><%= board.contents %></td>
-            <td class="tdId"><%= board.userid %></td>
+            <td class="tdNo"><%= i+1 %><% data[i].no %></td>
+            <td class="tdTi"><%= data[i].title %></td>
+            <td class="tdDay" style="color: azure"><%= data[i].contents %></td>
+            <td class="tdId"><%= data[i].userid %></td>
             <td class="tdBtnupd">
-              <a href="/board/upd/<%= board.no %>" class="updbtn btn1">
-                수정
-              </a>
+              <a href="/board/upd/<%= data[i].no %>" class="updbtn btn1"> 수정 </a>
             </td>
             <td class="tdBtndel">
-              <a href="/board/del/<%= board.no %>" class="btn2">삭제</a>
+              <a href="/board/del/<%= data[i].no %>" class="btn2">삭제</a>
             </td>
           </tr>
-          <% }); %>
+          <% } %>
         </tbody>
       </table>
-      <nav aria-label="Page navigation example" id="page-bar">
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      </div>
     </div>
     <script>
       let addbtn = document.querySelector(".addbtn");
       addbtn.addEventListener("click", () => {
-        window.location.href = "http://localhost:3000/board/add";
+        window.location.href = "/board/add";
       });
+      let backbtn = document.querySelector(".backbtn");
+      backbtn.addEventListener("click", () => {
+        window.location.href = "/lostark";
+      });
+      
     </script>
   </body>
 </html>
